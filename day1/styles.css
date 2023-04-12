@@ -1,0 +1,61 @@
+body,
+h1 {
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+.black-ground {
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+}
+
+.rounded {
+    border-radius: 12px;
+    width: 4rem;
+    height: 4rem;
+    position: relative;
+}
+.space {
+    width: 60%;
+}
+.key {
+    transition: all 0.5s;
+    border: 2px solid #ccc;
+}
+.key-display {
+    position: absolute;
+    font-size: 2rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.playing {
+    /* border-color: red; */
+    background-color: #888;
+}
+#listen,
+h1 {
+    text-align: center;
+}
+#key-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    border: 5px solid gray;
+    padding: 1rem 0.5rem;
+    margin: 0 auto;
+    border-radius: 8px;
+}
+
+.kb-row {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin: 0.5rem auto;
+}
+.gray {
+    background-color: #888;
+}
