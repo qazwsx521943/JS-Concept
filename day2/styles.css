@@ -1,0 +1,29 @@
+#clock {
+    width: 30rem;
+    height: 30rem;
+    border-radius: 50%;
+    border: 4px solid white;
+    background-color: black;
+    padding: 2rem;
+}
+
+main {
+    background-color: black;
+}
+#clock-face {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* transform: translateY(-3px); */
+}
+.line {
+    width: 50%;
+    height: 2px;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    transform-origin: 100%;
+    transform: rotate(90deg);
+    /* transition: all 0.05s; */
+    /* transition-timing-function: cubic-bezier(0.23, 1.2, 1, -1.17); */
+}
