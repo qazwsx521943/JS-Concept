@@ -6,6 +6,9 @@
     background-color: black;
     padding: 2rem;
 }
+h1 {
+    color: white;
+}
 
 main {
     background-color: black;
