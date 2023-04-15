@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Day6 - Ajax Type Ahead 👀</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="icon" href="https://fav.farm/🔥" />
+    </head>
+    <body>
+        <form class="search-form">
+            <input type="text" class="search" placeholder="City or State" />
+            <ul class="suggestions">
+                <li>Filter for a city</li>
+                <li>or a state</li>
+            </ul>
+        </form>
+        <script>
+            const endpoint =
+                "https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json";
+            const ulElement = document.querySelector(".suggestions");
+            const searchInput = document.querySelector("input");
+
+            let cities = [];
+            fetch(endpoint)
+                .then((blob) => blob.json())
+                .then((data) => cities.push(...data));
+            function findMatch(input, citys = cities) {
+                return citys.filter((place) => {
+                    const regex = new RegExp(input, "gi");
+                    return place.city.match(regex) || place.state.match(regex);
+                });
+            }
+
+            function displayMatch(arr) {
+                // ulElement.innerHTML = "";
+                arr = findMatch(this.value);
+                const html = arr
+                    .map((i) => {
+                        const regex = new RegExp(this.value, "gi");
+                        const cityName = i.city.replace(regex, `<span class="hl">${this.value}</span>`);
+                        const stateName = i.state.replace(regex, `<span class="hl">${this.value}</span>`);
+                        return `<li><span class="name">${cityName},${stateName}</span><span>${i.population}</span></li>`;
+                    })
+                    .join("");
+                // arr.forEach((i) => {
+                //     const li = document.createElement("li");
+                //     li.innerText = i.city;
+                //     ulElement.appendChild(li);
+                // });
+                ulElement.innerHTML = html;
+            }
+
+            searchInput.addEventListener("keyup", displayMatch);
+            // input.addEventListener("input", async function (e) {
+            //     ulElement.innerHTML = "";
+            //     const list = await fetchCity();
+            //     const listEl = list.filter((e) => e.city.includes(this.value));
+            //     listEl.forEach((el) => {
+            //         const li = document.createElement("li");
+            //         li.innerText = el.city;
+            //         ulElement.appendChild(li);
+            //     });
+            // });
+        </script>
+    </body>
+</html>
