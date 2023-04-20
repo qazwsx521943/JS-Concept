@@ -1,3 +1,4 @@
+// NOTE O(n)  solve by pointer instead of using for loop O(n^2)
 function palindromeCheck(str) {
     let strToArr = str.split("");
     let min = 0;
