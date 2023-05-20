@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mouse Shadow</title>
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+<body>
+
+  <div class="hero">
+    <h1 contenteditable>🔥WOAH!</h1>
+    <div>
+      <h3></h3>
+      <h2></h2>
+      <h4></h4>
+    </div>
+  </div>
+
+  <style>
+  html {
+    color: black;
+    font-family: sans-serif;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+  }
+
+  h1 {
+    text-shadow: 10px 10px 0 rgba(0,0,0,1);
+    font-size: 100px;
+  }
+  </style>
+
+<script>
+const hero = document.querySelector('.hero');
+const woah = hero.querySelector('h1');
+const woahPosition = document.querySelector('h3');
+const mouse = document.querySelector('h2');
+const heroPosition = document.querySelector('h4');
+const walk = 100;
+
+function shadow(e) {
+  const { offsetWidth: height, offsetHeight: width } = woah;
+  let { offsetX: x, offsetY: y } = e;
+  console.log(e)
+  if (this !== e.target) {
+    x = x + e.target.offSetLeft;
+    y = y + e.target.offsetTop;
+  }
+  woahPosition.innerText = `mouse position => x:${x}, y:${y}`;
+  mouse.innerText = `fireWOAH position => height:${height}, width:${width}`;
+  heroPosition.innerText = `hero position => x:${hero.offsetLeft}, y:${hero.offsetTop}`;
+
+
+  let textShadowX = Math.round((x / width * walk)) - (walk / 2);
+  let textShadowY = Math.round((y / height * walk)) - (walk / 2);
+  woah.style.textShadow = `${textShadowX}px ${textShadowY}px 0 rgba(255,255,0,1)`;
+
+}
+
+hero.addEventListener('mousemove', shadow )
+
+
+</script>
+</body>
+</html>
